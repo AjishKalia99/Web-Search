@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>
+    My Web Search
+  </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static',filename="css/bootstrap.min.css") }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename="css/bootstrap-grid.min.css") }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename="css/bootstrap.css") }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename="css/main.css") }}">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="{{url_for('static',filename="js/bootstrap.min.js")}}"></script>
+  <script src="{{url_for('static',filename="js/bootstrap.bundle.min.js")}}"></script>
+</head>
+<body style="background-color:rgba(84, 233, 166, 0.62)">
+<div style="position:absolute; margin-top:10px; margin-left:97%;">
+</div>
+<div class="container-fluid" id="main">
+<div class="row" style="position:absolute;margin-top:8%; margin-left:0%;">
+  <div class="col-sm-12">
+      <p class="display-2">Whoops!!</p>
+  </div>
+  <div class="col-sm-12">
+      <p class="display-4">Something Went Wrong!!!!</p>
+  </div>
+  <div class="col-sm-12">
+    <br>
+    <a href="{{url_for('index')}}">Go to a Happy Place?</a>
+    <br>
+  </div>
+</div>
+</div>
+</body>
+</html>

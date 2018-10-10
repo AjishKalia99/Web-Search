@@ -1,0 +1,4 @@
+https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search
+
+config=409de4e9-e516-4401-bdb3-f1cba44b20de
+

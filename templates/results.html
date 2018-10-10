@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>
+    My Web Search
+  </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="{{url_for('static',filename="js/pace.js")}}"></script>
+  <link rel="stylesheet" href="{{ url_for('static',filename="css/pace-theme-minimal.css") }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename="css/bootstrap.min.css") }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename="css/bootstrap-grid.min.css") }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename="css/bootstrap.css") }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename="css/main.css") }}">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="{{url_for('static',filename="js/bootstrap.min.js")}}"></script>
+  <script src="{{url_for('static',filename="js/bootstrap.bundle.min.js")}}"></script>
+</head>
+<body style="background-color:rgba(84, 233, 166, 0.62);overflow-y:auto;overflow-x:hidden;">
+<nav class="navbar navbar-expand-xl bg-light navbar-dark" style="height:70px;">
+  <a class="navbar-brand" href="{{url_for('index')}}">
+  <img src="{{url_for('static',filename="images/logo.png")}}" alt="Logo" style="width:60px; position:absolute; top:5px; left:1%;">
+  </a>
+  &nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
+  <form action="{{url_for('results')}}" class="form-inline">
+  <input class="form-control-lg" type="text" size=80 name="search" style="position:absolute; top:7px; left:18%;">
+  </input>
+  &nbsp &nbsp
+  <input type="submit" class="btn btn-lg btn-primary" value="Search" style="position:absolute; top:7px; left:73%;"></input>
+</form>
+</nav>
+{% for i in range(0,data['items']|length) %}
+<a href="{{data['items'][i]['link']}}" style="font-size:25px; position:relative; margin-left:1% ">{{data['items'][i]['title']}}</a><br>
+<p class="text-secondary" style="font-size:15px; position:relative; margin-left:1%; margin-top:0px;">{{data['items'][i]['displayLink']}}</p>
+
+<p class="text-secondary" style="font-size:15px; position:relative; margin-left:1%; margin-top:0px;">
+{% if data['items'][i]['pagemap']['cse_thumbnail'] %}
+<img alt="thumb" src="{{data['items'][i]['pagemap']['cse_thumbnail'][0]['src']}}" height="100" width="100">
+{% endif %}
+<div style="position:relative; left:10px; width:300px; top:0px;" class="text-secondary">
+{{data['items'][i]['snippet']}}
+</div>
+</p>
+{% endfor %}
+<center>
+  <br>
+  {% if i==1 %}
+  <a  href="" style="color:rgb(132, 134, 133)"><< Previous Page </a>
+  {% else %}
+  <a  href="{{url_for('Prev_Page')}}"><< Previous Page </a>
+  {%endif %}
+  &nbsp &nbsp &nbsp &nbsp
+  <a href="{{url_for('Next_Page')}}">Next Page >></a>
+
+  <p class="display-6 text-secondary">
+    {{data['searchInformation']['formattedTotalResults']}} Results Returned in {{data['searchInformation']['formattedSearchTime']}} seconds
+  </p>
+</center>
+</body>
+</html>
